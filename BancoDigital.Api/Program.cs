@@ -1,0 +1,31 @@
+using BancoDigital.Api.Consumers;
+using BancoDigital.Api.Data;
+using BancoDigital.Api.Services;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new() { Title = "Banco Digital API", Version = "v1" });
+});
+
+builder.Services.AddDbContext<BancoContext>(options =>
+    options.UseOracle(builder.Configuration.GetConnectionString("OracleConnection")));
+
+builder.Services.AddSingleton<IRabbitMqPublisher, RabbitMqPublisher>();
+builder.Services.AddHostedService<ContratacaoConsumer>();
+
+var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Banco Digital API v1"));
+
+app.UseHttpsRedirection();
+app.MapControllers();
+
+app.Run();
+
+public partial class Program { }

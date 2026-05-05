@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet new *)",
+      "Bash(dotnet sln *)",
+      "Bash(dotnet add *)",
+      "Bash(rm c:/projetos/CP2/BancoDigital.Api/Controllers/WeatherForecastController.cs)",
+      "Bash(dotnet build *)",
+      "Bash(dotnet remove *)",
+      "Bash(cd c:/projetos/CP2/BancoDigital.Api && dotnet add package Microsoft.EntityFrameworkCore.Design --version 8.0.3 2>&1 | tail -3 && cd ../BancoDigital.Tests && dotnet add package Microsoft.EntityFrameworkCore.InMemory --version 8.0.3 2>&1 | tail -3)",
+      "Read(//c/projetos/**)",
+      "Bash(dotnet test *)",
+      "Bash(dotnet ef *)",
+      "Bash(dotnet tool *)"
+    ]
+  }
+}
