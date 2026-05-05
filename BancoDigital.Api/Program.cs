@@ -1,6 +1,4 @@
-using BancoDigital.Api.Consumers;
 using BancoDigital.Api.Data;
-using BancoDigital.Api.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,9 +12,6 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddDbContext<BancoContext>(options =>
     options.UseOracle(builder.Configuration.GetConnectionString("OracleConnection")));
-
-builder.Services.AddSingleton<IRabbitMqPublisher, RabbitMqPublisher>();
-builder.Services.AddHostedService<ContratacaoConsumer>();
 
 var app = builder.Build();
 

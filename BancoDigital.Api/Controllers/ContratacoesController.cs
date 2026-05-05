@@ -2,7 +2,6 @@ using BancoDigital.Api.Data;
 using BancoDigital.Api.Domain.Entities;
 using BancoDigital.Api.Domain.Enums;
 using BancoDigital.Api.DTOs;
-using BancoDigital.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,12 +12,10 @@ namespace BancoDigital.Api.Controllers;
 public class ContratacoesController : ControllerBase
 {
     private readonly BancoContext _db;
-    private readonly IRabbitMqPublisher _publisher;
 
-    public ContratacoesController(BancoContext db, IRabbitMqPublisher publisher)
+    public ContratacoesController(BancoContext db)
     {
         _db = db;
-        _publisher = publisher;
     }
 
     [HttpPost]
@@ -44,9 +41,7 @@ public class ContratacoesController : ControllerBase
         _db.Contratacoes.Add(contratacao);
         await _db.SaveChangesAsync();
 
-        _publisher.Publish("contratacoes", contratacao.Id.ToString());
-
-        return Accepted(new { contratacao.Id, Status = contratacao.Status.ToString(), Mensagem = "Contratação recebida e enviada para análise." });
+        return Accepted(new { contratacao.Id, Status = contratacao.Status.ToString(), Mensagem = "Contratação recebida." });
     }
 
     [HttpGet("{id:long}")]

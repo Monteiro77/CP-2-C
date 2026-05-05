@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- AGENCIA -->
+    <mxCell id="agencia" value="Agencia" style="swimlane;fontStyle=1;align=center;startSize=30;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="60" width="200" height="140" as="geometry" />
+    </mxCell>
+    <mxCell id="ag1" value="+ Id : long" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="agencia">
+      <mxGeometry y="30" width="200" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="ag2" value="+ Nome : string" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="agencia">
+      <mxGeometry y="56" width="200" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="ag3" value="+ Codigo : string" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="agencia">
+      <mxGeometry y="82" width="200" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="ag4" value="+ Endereco : string" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="agencia">
+      <mxGeometry y="108" width="200" height="26" as="geometry" />
+    </mxCell>
+
+    <!-- CLIENTE (abstract) -->
+    <mxCell id="cliente" value="&lt;i&gt;«abstract»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Cliente&lt;/b&gt;" style="swimlane;align=center;startSize=50;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="330" y="60" width="240" height="200" as="geometry" />
+    </mxCell>
+    <mxCell id="cl1" value="+ Id : long" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="cliente">
+      <mxGeometry y="50" width="240" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="cl2" value="+ Nome : string" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="cliente">
+      <mxGeometry y="76" width="240" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="cl3" value="+ Email : string" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="cliente">
+      <mxGeometry y="102" width="240" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="cl4" value="+ Telefone : string" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="cliente">
+      <mxGeometry y="128" width="240" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="cl5" value="+ AgenciaId : long" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="cliente">
+      <mxGeometry y="154" width="240" height="26" as="geometry" />
+    </mxCell>
+
+    <!-- PESSOA FISICA -->
+    <mxCell id="pf" value="PessoaFisica" style="swimlane;fontStyle=1;align=center;startSize=30;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="150" y="380" width="220" height="90" as="geometry" />
+    </mxCell>
+    <mxCell id="pf1" value="+ Cpf : string" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="pf">
+      <mxGeometry y="30" width="220" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="pf2" value="+ DataNascimento : DateTime" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="pf">
+      <mxGeometry y="56" width="220" height="26" as="geometry" />
+    </mxCell>
+
+    <!-- PESSOA JURIDICA -->
+    <mxCell id="pj" value="PessoaJuridica" style="swimlane;fontStyle=1;align=center;startSize=30;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="430" y="380" width="220" height="90" as="geometry" />
+    </mxCell>
+    <mxCell id="pj1" value="+ Cnpj : string" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="pj">
+      <mxGeometry y="30" width="220" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="pj2" value="+ RazaoSocial : string" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="pj">
+      <mxGeometry y="56" width="220" height="26" as="geometry" />
+    </mxCell>
+
+    <!-- PRODUTO (abstract) -->
+    <mxCell id="produto" value="&lt;i&gt;«abstract»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Produto&lt;/b&gt;" style="swimlane;align=center;startSize=50;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="900" y="60" width="220" height="152" as="geometry" />
+    </mxCell>
+    <mxCell id="pr1" value="+ Id : long" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="produto">
+      <mxGeometry y="50" width="220" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="pr2" value="+ Nome : string" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="produto">
+      <mxGeometry y="76" width="220" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="pr3" value="+ Descricao : string" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="produto">
+      <mxGeometry y="102" width="220" height="26" as="geometry" />
+    </mxCell>
+
+    <!-- EMPRESTIMO -->
+    <mxCell id="emprestimo" value="Emprestimo" style="swimlane;fontStyle=1;align=center;startSize=30;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="700" y="380" width="230" height="116" as="geometry" />
+    </mxCell>
+    <mxCell id="emp1" value="+ ValorMinimo : decimal" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="emprestimo">
+      <mxGeometry y="30" width="230" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="emp2" value="+ ValorMaximo : decimal" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="emprestimo">
+      <mxGeometry y="56" width="230" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="emp3" value="+ TaxaJurosMensal : decimal" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="emprestimo">
+      <mxGeometry y="82" width="230" height="26" as="geometry" />
+    </mxCell>
+
+    <!-- MAQUINA DE CARTAO -->
+    <mxCell id="maquina" value="MaquinaDeCartao" style="swimlane;fontStyle=1;align=center;startSize=30;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="960" y="380" width="200" height="64" as="geometry" />
+    </mxCell>
+    <mxCell id="maq1" value="+ TaxaMdr : decimal" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="maquina">
+      <mxGeometry y="30" width="200" height="26" as="geometry" />
+    </mxCell>
+
+    <!-- RECEBER SALARIO -->
+    <mxCell id="salario" value="ReceberSalario" style="swimlane;fontStyle=1;align=center;startSize=30;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="1200" y="380" width="200" height="64" as="geometry" />
+    </mxCell>
+    <mxCell id="sal1" value="+ NomeEmpresa : string" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="salario">
+      <mxGeometry y="30" width="200" height="26" as="geometry" />
+    </mxCell>
+
+    <!-- CONTRATACAO -->
+    <mxCell id="contratacao" value="Contratacao" style="swimlane;fontStyle=1;align=center;startSize=30;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="490" y="580" width="290" height="270" as="geometry" />
+    </mxCell>
+    <mxCell id="con1" value="+ Id : long" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="contratacao">
+      <mxGeometry y="30" width="290" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="con2" value="+ ClienteId : long" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="contratacao">
+      <mxGeometry y="56" width="290" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="con3" value="+ ProdutoId : long" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="contratacao">
+      <mxGeometry y="82" width="290" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="con4" value="+ Status : StatusContratacao" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="contratacao">
+      <mxGeometry y="108" width="290" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="con5" value="+ ValorSolicitado : decimal" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="contratacao">
+      <mxGeometry y="134" width="290" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="con6" value="+ DataSolicitacao : DateTime" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="contratacao">
+      <mxGeometry y="160" width="290" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="con7" value="+ DataProcessamento : DateTime?" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="contratacao">
+      <mxGeometry y="186" width="290" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="con8" value="+ ObservacaoProcessamento : string?" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="contratacao">
+      <mxGeometry y="212" width="290" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="con9" value="+ ScoreCredito : int" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="contratacao">
+      <mxGeometry y="238" width="290" height="26" as="geometry" />
+    </mxCell>
+
+    <!-- STATUS CONTRATACAO (enum) -->
+    <mxCell id="status" value="&lt;i&gt;«enumeration»&lt;/i&gt;&lt;br&gt;&lt;b&gt;StatusContratacao&lt;/b&gt;" style="swimlane;align=center;startSize=50;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="890" y="600" width="220" height="160" as="geometry" />
+    </mxCell>
+    <mxCell id="st1" value="Pendente = 0" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="status">
+      <mxGeometry y="50" width="220" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="st2" value="EmAnalise = 1" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="status">
+      <mxGeometry y="76" width="220" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="st3" value="Aprovada = 2" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="status">
+      <mxGeometry y="102" width="220" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="st4" value="Reprovada = 3" style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="status">
+      <mxGeometry y="128" width="220" height="26" as="geometry" />
+    </mxCell>
+
+    <!-- EDGES -->
+
+    <!-- PessoaFisica extends Cliente (heranca) -->
+    <mxCell id="e_pf_cl" value="" style="endArrow=block;endFill=0;edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" source="pf" target="cliente" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- PessoaJuridica extends Cliente (heranca) -->
+    <mxCell id="e_pj_cl" value="" style="endArrow=block;endFill=0;edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" source="pj" target="cliente" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Emprestimo extends Produto (heranca) -->
+    <mxCell id="e_emp_pr" value="" style="endArrow=block;endFill=0;edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" source="emprestimo" target="produto" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- MaquinaDeCartao extends Produto (heranca) -->
+    <mxCell id="e_maq_pr" value="" style="endArrow=block;endFill=0;edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" source="maquina" target="produto" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- ReceberSalario extends Produto (heranca) -->
+    <mxCell id="e_sal_pr" value="" style="endArrow=block;endFill=0;edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" source="salario" target="produto" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Agencia 1 para N Cliente (associacao) -->
+    <mxCell id="e_ag_cl" value="" style="endArrow=open;endFill=0;edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" source="agencia" target="cliente" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_ag_cl_s" value="1" style="resizable=0;html=1;align=left;verticalAlign=bottom;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e_ag_cl">
+      <mxGeometry x="-1" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+    </mxCell>
+    <mxCell id="e_ag_cl_t" value="*" style="resizable=0;html=1;align=right;verticalAlign=bottom;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e_ag_cl">
+      <mxGeometry x="1" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+    </mxCell>
+
+    <!-- Cliente 1 para N Contratacao (associacao) -->
+    <mxCell id="e_cl_con" value="" style="endArrow=open;endFill=0;edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" source="cliente" target="contratacao" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_cl_con_s" value="1" style="resizable=0;html=1;align=left;verticalAlign=bottom;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e_cl_con">
+      <mxGeometry x="-1" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+    </mxCell>
+    <mxCell id="e_cl_con_t" value="*" style="resizable=0;html=1;align=right;verticalAlign=bottom;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e_cl_con">
+      <mxGeometry x="1" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+    </mxCell>
+
+    <!-- Produto 1 para N Contratacao (associacao) -->
+    <mxCell id="e_pr_con" value="" style="endArrow=open;endFill=0;edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" source="produto" target="contratacao" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_pr_con_s" value="1" style="resizable=0;html=1;align=left;verticalAlign=bottom;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e_pr_con">
+      <mxGeometry x="-1" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+    </mxCell>
+    <mxCell id="e_pr_con_t" value="*" style="resizable=0;html=1;align=right;verticalAlign=bottom;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e_pr_con">
+      <mxGeometry x="1" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+    </mxCell>
+
+    <!-- Contratacao ..> StatusContratacao (dependencia) -->
+    <mxCell id="e_con_st" value="«usa»" style="endArrow=open;endFill=0;dashed=1;edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" source="contratacao" target="status" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel>

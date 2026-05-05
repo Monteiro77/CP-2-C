@@ -1,11 +1,9 @@
 using BancoDigital.Api.Data;
 using BancoDigital.Api.Domain.Entities;
-using BancoDigital.Api.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Moq;
 
 namespace BancoDigital.Tests.Helpers;
 
@@ -23,13 +21,6 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 
             services.AddDbContext<BancoContext>(options =>
                 options.UseInMemoryDatabase(dbName));
-
-            var publisherDescriptor = services.SingleOrDefault(d =>
-                d.ServiceType == typeof(IRabbitMqPublisher));
-            if (publisherDescriptor != null) services.Remove(publisherDescriptor);
-
-            var mockPublisher = new Mock<IRabbitMqPublisher>();
-            services.AddSingleton(mockPublisher.Object);
 
             var sp = services.BuildServiceProvider();
             using var scope = sp.CreateScope();

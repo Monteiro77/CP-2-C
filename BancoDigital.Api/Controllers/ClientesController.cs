@@ -22,7 +22,7 @@ public class ClientesController : ControllerBase
         var agencia = await _db.Agencias.FindAsync(request.AgenciaId);
         if (agencia is null) return NotFound(new { Mensagem = "Agência não encontrada." });
 
-        var cpfExiste = await _db.PessoasFisicas.AnyAsync(p => p.Cpf == request.Cpf);
+        var cpfExiste = await _db.PessoasFisicas.CountAsync(p => p.Cpf == request.Cpf) > 0;
         if (cpfExiste) return Conflict(new { Mensagem = "CPF já cadastrado." });
 
         var pf = new PessoaFisica
@@ -49,7 +49,7 @@ public class ClientesController : ControllerBase
         var agencia = await _db.Agencias.FindAsync(request.AgenciaId);
         if (agencia is null) return NotFound(new { Mensagem = "Agência não encontrada." });
 
-        var cnpjExiste = await _db.PessoasJuridicas.AnyAsync(p => p.Cnpj == request.Cnpj);
+        var cnpjExiste = await _db.PessoasJuridicas.CountAsync(p => p.Cnpj == request.Cnpj) > 0;
         if (cnpjExiste) return Conflict(new { Mensagem = "CNPJ já cadastrado." });
 
         var pj = new PessoaJuridica

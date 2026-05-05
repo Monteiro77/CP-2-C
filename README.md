@@ -12,43 +12,19 @@
 
 **Empréstimo Pessoal**
 
-O produto Empréstimo foi escolhido por ser o que melhor demonstra análise de crédito assíncrona — o ponto central da atividade. O consumer calcula um score (300–900) baseado no perfil do cliente e aprova ou reprova automaticamente, aplicando taxa de juros inversamente proporcional ao score.
+O produto Empréstimo foi escolhido por ser o que melhor demonstra análise de crédito — o ponto central da atividade. A contratação é registrada com status `Pendente` e pode ser consultada a qualquer momento pelo endpoint de status.
 
-Regras de negócio implementadas:
-- Score < 600 → Reprovado
-- Score 600–699 → Aprovado com taxa de 2,99% ao mês
-- Score 700–799 → Aprovado com taxa de 2,49% ao mês
-- Score ≥ 800 → Aprovado com taxa de 1,99% ao mês
-- Valor fora do intervalo do produto (R$ 1.000 – R$ 50.000) → Reprovado independente do score
+## 3. Diagrama de classes
 
-## 3. Decisão de modelagem de filas
+Arquivo fonte: [docs/diagrama-classes.drawio](docs/diagrama-classes.drawio)
 
-**1 fila única: `contratacoes`**
+![Diagrama de Classes](docs/diagrama-classes.drawio.png)
 
-Justificativa: como a atividade é individual e implementa 1 produto, uma única fila direct é suficiente e mais simples de operar. Quando o POST `/api/contratacoes` é chamado, o ID da contratação é publicado na fila. O consumer (BackgroundService) consome mensagens, processa a análise de crédito e atualiza o status no banco.
-
-Exchange utilizado: default (direct, sem exchange nomeado), routing key = nome da fila.
-
-## 4. Diagrama de classes
-
-> Adicione a imagem `docs/diagrama-classes.png` após gerar no draw.io.
-
-![Diagrama de Classes](docs/diagrama-classes.png)
-
-## 5. Como rodar localmente
+## 4. Como rodar localmente
 
 ### Pré-requisitos
 - .NET 8.0 SDK
-- Docker (para RabbitMQ)
 - Acesso à rede da FIAP (VPN ou presença física) para Oracle
-
-### RabbitMQ via Docker
-```bash
-docker run -d --hostname rabbitmq --name rabbitmq \
-  -p 5672:5672 -p 15672:15672 \
-  rabbitmq:3-management
-```
-Painel de administração: http://localhost:15672 (guest/guest)
 
 ### Banco de dados
 ```bash
@@ -57,13 +33,21 @@ dotnet ef database update
 ```
 
 ### Executar a API
+
+Na pasta raiz do projeto:
+```bash
+dotnet run --project BancoDigital.Api
+```
+
+Ou entrando na pasta do projeto:
 ```bash
 cd BancoDigital.Api
 dotnet run
 ```
-Swagger disponível em: https://localhost:{porta}/swagger
 
-## 6. Endpoints disponíveis
+Swagger disponível em: http://localhost:5186/swagger
+
+## 5. Endpoints disponíveis
 
 ### POST /api/agencias
 ```json
@@ -178,41 +162,55 @@ Response 202:
 {
   "id": 1,
   "status": "Pendente",
-  "mensagem": "Contratação recebida e enviada para análise."
+  "mensagem": "Contratação recebida."
 }
 ```
 
 ### GET /api/contratacoes/{id}
 ```json
-Response 200 (após processamento):
+Response 200:
 {
   "id": 1,
   "clienteId": 1,
   "nomeCliente": "João da Silva",
   "produtoId": 1,
   "nomeProduto": "Empréstimo Pessoal",
-  "status": "Aprovada",
+  "status": "Pendente",
   "valorSolicitado": 15000.00,
   "dataSolicitacao": "2026-05-05T10:00:00Z",
-  "dataProcessamento": "2026-05-05T10:00:02Z",
-  "observacaoProcessamento": "Aprovado. Score: 720. Taxa mensal aplicada: 2,49%.",
-  "scoreCredito": 720
+  "dataProcessamento": null,
+  "observacaoProcessamento": null,
+  "scoreCredito": null
 }
 ```
 
-## 7. Como executar os testes
+## 6. Como executar os testes
 
 ```bash
-cd BancoDigital.Tests
 dotnet test --logger "console;verbosity=normal"
 ```
 
-> Adicione aqui o print do resultado dos testes.
+![Resultado dos testes](docs/Captura%20de%20tela%202026-05-05%20203740.png)
 
-## 8. Print do painel RabbitMQ
+## 7. Evidências da API no Swagger
 
-> Adicione aqui o print do painel em http://localhost:15672 mostrando a fila `contratacoes` com mensagens processadas.
+### POST /api/agencias → 201
+![POST agencias](docs/Captura%20de%20tela%202026-05-05%20202041.png)
 
-## 9. Print da API no Swagger
+### GET /api/agencias/{id} → 200
+![GET agencias](docs/Captura%20de%20tela%202026-05-05%20202113.png)
 
-> Adicione aqui o print do Swagger com pelo menos uma contratação aprovada.
+### POST /api/clientes/pf → 201
+![POST clientes pf](docs/Captura%20de%20tela%202026-05-05%20203952.png)
+
+### GET /api/clientes/{id} → 200
+![GET clientes](docs/Captura%20de%20tela%202026-05-05%20204150.png)
+
+### POST /api/clientes/pj → 201
+![POST clientes pj](docs/Captura%20de%20tela%202026-05-05%20204248.png)
+
+### POST /api/contratacoes → 202
+![POST contratacoes](docs/Captura%20de%20tela%202026-05-05%20204323.png)
+
+### GET /api/contratacoes/{id} → 200
+![GET contratacoes](docs/Captura%20de%20tela%202026-05-05%20204344.png)
