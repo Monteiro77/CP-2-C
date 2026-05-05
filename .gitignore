@@ -9,8 +9,10 @@ obj/
 .idea/
 
 # Secrets
+appsettings.json
 appsettings.*.json
 !appsettings.Development.json
+!appsettings.example.json
 
 # OS
 .DS_Store
